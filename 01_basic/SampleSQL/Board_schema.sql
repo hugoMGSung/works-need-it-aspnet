@@ -1,0 +1,51 @@
+USE [HugoBoard]
+GO
+/****** Object:  Table [dbo].[TblNote]    Script Date: 2022-11-21 오후 4:18:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TblNote](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [varchar](20) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Title] [nvarchar](150) NOT NULL,
+	[ReadCount] [int] NULL,
+	[PostDate] [datetime] NULL,
+	[Contents] [ntext] NULL,
+ CONSTRAINT [PK__TblNotes__3214EC07FBC8A308] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TblUser]    Script Date: 2022-11-21 오후 4:18:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TblUser](
+	[Num] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [varchar](20) NOT NULL,
+	[Password] [varchar](250) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Gender] [nvarchar](4) NULL,
+	[Birthday] [date] NULL,
+	[Email] [varchar](150) NOT NULL,
+	[Phone] [varchar](13) NULL,
+	[Address] [nvarchar](100) NULL,
+ CONSTRAINT [PK_TblUser] PRIMARY KEY CLUSTERED 
+(
+	[Num] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UK_TblUser] UNIQUE NONCLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = ON, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[TblNote]  WITH CHECK ADD  CONSTRAINT [FK_TblNotes_TblUser] FOREIGN KEY([UserId])
+REFERENCES [dbo].[TblUser] ([UserId])
+GO
+ALTER TABLE [dbo].[TblNote] CHECK CONSTRAINT [FK_TblNotes_TblUser]
+GO

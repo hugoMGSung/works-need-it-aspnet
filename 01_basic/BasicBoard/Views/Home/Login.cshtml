@@ -1,0 +1,42 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-12 m-auto">
+            <div class="row my-5">
+                <div class="col-sm-10 col-xl-8 m-auto">
+                    <h2>Login</h2>
+                    <form method="post" action="/Home/Login">
+                        <div class="mb-4">
+                            <label> UserId : </label>
+                            <div class="input-group input-group-lg">
+                                <input type="text" placeholder="Type UserId" class="form-control border-0 rounded" id="UserId" name="UserId" />
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label> Password :</label>
+                            <div class="input-group input-group-lg">
+                                <input type="password" placeholder="Type User Password" class="form-control border-0 rounded" id="Password" name="Password" />
+                            </div>
+                        </div>
+                        <div class="align-items-center mt-0">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success mb-0">LogIn</button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div class="row justify-content-center">
+                        <div class="position-relative">
+                            <hr />
+                            <p class="text-center">Or</p>
+                        </div>
+                    </div>
+
+                    <!-- Sign up link -->
+                    <div class="text-center">
+                        <span>Don't have an account? <a href="@Url.Action("Signup","Home")">SignUp</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+﻿<div class="container">
+    <div class="row g-5 justify-content-between">
+        <h2 class="mb-3">SignUp</h2>
+        <form class="row g-3" asp-controller="Home" asp-action="Signup" method="post">
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">아이디<span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" placeholder="사용자 ID입력" name="UserId" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">비밀번호<span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="password" class="form-control" placeholder="사용자 비밀번호 입력" name="Password" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">비밀번호 확인<span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="password" class="form-control" placeholder="사용자 비밀번호 확인" name="PasswordCheck" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">이름<span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" placeholder="이름" name="UserName" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">성별<span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="d-flex">
+                            <select class="form-select" name="Gender">
+                                <option value="남자">남자</option>
+                                <option value="여자">여자</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">이메일</h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="email" class="form-control" placeholder="이메일" name="UserEmail" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">휴대폰 번호</h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" placeholder="휴대폰 번호는 010-0000-0000 형식으로 작성하세요." name="UserPhone" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row g-xl-0 align-items-center">
+                    <div class="col-lg-4">
+                        <h6 class="mb-lg-0">주소<span class="text-danger">*</span></h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" placeholder="주소" name="Address" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-sm-end">
+                <button type="submit" class="btn btn-primary">SignUp</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-warning">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

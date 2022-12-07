@@ -1,0 +1,49 @@
+﻿@model BasicBoard.Models.Note
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h2 class="text-primary">Delete Note</h2>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-controller="Note" asp-action="DeletePost" method="post" enctype="multipart/form-data">
+            <input asp-for="Id" hidden />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">작성자</label>
+                <input asp-for="Name" class="form-control" />
+                @*<span asp-validation-for="Name" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">제목</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contents" class="control-label">내용</label>
+                <textarea asp-for="Contents" class="form-control editor" rows="10" placeholder="본문 내용"></textarea>
+                @*<span asp-validation-for="Contents" class="text-danger"></span>*@
+            </div>
+            <br/>
+            <div class="form-group">
+                <button type="submit" value="Delete" class="btn btn-warning"><span class="bi bi-trash"></span> Delete</button>
+                @*<input type="submit" value="Edit" class="btn btn-primary" />*@
+                <a asp-controller="Note" asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-list"></i> &nbsp; List
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
