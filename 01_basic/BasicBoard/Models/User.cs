@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Authentication;
+using System.ComponentModel.DataAnnotations;
 
 namespace BasicBoard.Models
 {
@@ -18,5 +19,9 @@ namespace BasicBoard.Models
         public string UserPhone { get; set; }
         public string Gender { get; set; } 
         public string Address { get; set; }
+
+        public string ReturnUrl { get; set; }
+
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
 }

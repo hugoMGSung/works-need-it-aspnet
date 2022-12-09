@@ -1,7 +1,8 @@
-using BasicBoard.Data;
+using BasicCore.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace BasicBoard
+namespace BasicCore
 {
     public class Program
     {
@@ -11,23 +12,13 @@ namespace BasicBoard
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
+            builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnection")
             ));
 
-            //builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-            builder.Services.AddSession(options =>
-            {
-                options.Cookie.Name = "HugoBoardSession";   // 세션이름
-                options.IdleTimeout = TimeSpan.FromMinutes(20); // 세션 지속시간
-            }).AddControllersWithViews();
-
-            //builder.Services.AddAuthentication()
-            //    .AddGoogle(options =>
-            //    {
-            //        options.ClientId = "851215818915-bkm8c2j7p1g3a6a4amif01heneo4p82n.apps.googleusercontent.com";
-            //        options.ClientSecret = "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";
-            //    });
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             var app = builder.Build();
 
@@ -43,8 +34,8 @@ namespace BasicBoard
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseSession(); // 파이프라인에셔 세션 사용
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

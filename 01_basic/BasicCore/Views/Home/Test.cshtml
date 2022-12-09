@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Test";
+    var info = ViewData["Info"] as Info;
+}
+<h1>@ViewBag.Greeting World</h1>
+
+<p>Use this test page</p>
+<info>
+    @ViewBag.Info.Name<br />
+    @ViewBag.Info.Address2, @ViewBag.Info.Address1<br />
+    @ViewBag.Info.PostalCode<br />
+</info>
