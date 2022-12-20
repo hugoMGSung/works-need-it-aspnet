@@ -4,6 +4,6 @@ namespace BasicCore.Models
 {
     public class CustomUser : IdentityUser
     {
-        public string City { get; set; }
+        public string? City { get; set; }
     }
 }

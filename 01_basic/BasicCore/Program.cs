@@ -29,6 +29,14 @@ namespace BasicCore
             //    options.Password.RequireUppercase = false;
             //});
 
+            builder.Services.AddAuthentication()
+                .AddGoogle(opts =>
+                {
+                    opts.ClientId = "732865836057-518obuh57h53b0s9mcg4r49ca2r7jc5r.apps.googleusercontent.com";
+                    opts.ClientSecret = "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";
+                    opts.SignInScheme = IdentityConstants.ExternalScheme;
+                });
+
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("EditRolePolicy",
