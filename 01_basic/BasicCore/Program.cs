@@ -1,4 +1,5 @@
 using BasicCore.Data;
+using BasicCore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,26 @@ namespace BasicCore
                 builder.Configuration.GetConnectionString("DefaultConnection")
             ));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+            builder.Services.AddIdentity<CustomUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            // 패스워드 정책 변경
+            //builder.Services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.Password.RequiredLength = 10;
+            //    options.Password.RequiredUniqueChars = 3;
+            //    options.Password.RequireUppercase = false;
+            //});
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("EditRolePolicy",
+                    policy => policy.RequireClaim("Edit Role"));
+
+                options.AddPolicy("DeleteRolePolicy",
+                    policy => policy.RequireClaim("Delete Role"));
+            });
 
             var app = builder.Build();
 
@@ -35,7 +53,7 @@ namespace BasicCore
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseAuthentication();  // Shared/Login.cshtml과 충돌발생
             app.UseAuthorization();
 
             app.MapControllerRoute(
